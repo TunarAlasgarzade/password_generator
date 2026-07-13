@@ -48,6 +48,11 @@ class _HomePageState extends State<HomePage> {
               trailing: IconButton(
                 icon: Icon(Icons.copy), onPressed: () {
                   Clipboard.setData(ClipboardData(text: password));
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      content: Text("Password copied!")
+                    )
+                  );
                 }
               ),
             ),
