@@ -8,9 +8,10 @@ A simple password generator app built with Flutter.
 - Change password length
 - Copy passwords to clipboard
 - Generate a password automatically when the app starts
-- Support for:
+- Supports letters, numbers, and symbols
 
-  - Uppercase letters
-  - Lowercase letters
-  - Numbers
-  - Symbols
+## Screenshots
+
+<p align="center">
+  <img src="assets/screenshots/password_generator_ss.jpg" width="250">
+</p>
