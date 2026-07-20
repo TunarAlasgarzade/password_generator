@@ -1,6 +1,8 @@
 import 'package:flutter/services.dart';
 import 'dart:math';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:pw_generator/themes/theme_provider.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -34,9 +36,21 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Theme.of(context).colorScheme.surface,
       appBar: AppBar(
         title: Text("Password Generator", style: TextStyle(color: Colors.white),),
-        backgroundColor: Colors.green,
+        backgroundColor: Theme.of(context).colorScheme.primary,
+        actions: [
+          IconButton(
+            onPressed: () {
+              Provider.of<ThemeProvider>(context, listen: false).toggleTheme();
+            }, 
+            icon: Icon(
+              Provider.of<ThemeProvider>(context).isDarkMode == false 
+                ? Icons.wb_sunny : Icons.nightlight_round, color: Colors.white,
+              )
+          )
+        ],
       ),
       body: Center(
         child: Column(
@@ -65,7 +79,7 @@ class _HomePageState extends State<HomePage> {
                 });
               },
               style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.green,
+                backgroundColor: Theme.of(context).colorScheme.primary,
                 fixedSize: const Size(350, 45),
               ),
               child: Text("Regenerate", style: TextStyle(color: Colors.white),),
@@ -77,7 +91,7 @@ class _HomePageState extends State<HomePage> {
             Container(
               padding: const EdgeInsets.only(left: 10),
               decoration: BoxDecoration(
-                color: Colors.grey.shade600,
+                color: Theme.of(context).colorScheme.secondary,
                 borderRadius: BorderRadius.circular(10),
               ),
               height: 60,
